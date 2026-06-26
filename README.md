@@ -7,8 +7,8 @@ A small dependency-free Ruby command line client for the TogoWS REST API.
 Install from this repository:
 
 ```sh
-gem build togows-cli.gemspec
-gem install ./togows-cli-*.gem
+gem build togows.gemspec
+gem install ./togows-*.gem
 ```
 
 ```sh
@@ -84,8 +84,8 @@ TOGOWS_LIVE_TEST=1 bundle exec rake test
 ## Release
 
 ```sh
-gem build togows-cli.gemspec
-gem push togows-cli-*.gem
+gem build togows.gemspec
+gem push togows-*.gem
 ```
 
 ## License

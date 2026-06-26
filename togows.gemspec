@@ -3,13 +3,13 @@
 require_relative "lib/togows/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "togows-cli"
+  spec.name = "togows"
   spec.version = TogoWS::VERSION
   spec.authors = ["kojix2"]
   spec.email = ["2xijok@gmail.com"]
 
   spec.summary = "Dependency-free command line client for the TogoWS REST API"
-  spec.description = "togows-cli provides a small Ruby command line interface for TogoWS entry, search, " \
+  spec.description = "togows provides a small Ruby command line interface for TogoWS entry, search, " \
                      "convert, and UCSC API endpoints."
   spec.homepage = "https://github.com/kojix2/togows-cli"
   spec.license = "MIT"

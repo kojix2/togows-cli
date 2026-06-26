@@ -6,7 +6,7 @@ require "uri"
 module TogoWS
   class Client
     MAX_REDIRECTS = 5
-    USER_AGENT = "togows-cli/#{VERSION}".freeze
+    USER_AGENT = "togows/#{VERSION}".freeze
 
     def initialize(base_url, timeout)
       @base_url = base_url

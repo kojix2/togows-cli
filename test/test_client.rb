@@ -70,7 +70,7 @@ class TestClient < Minitest::Test
     assert fake_http.use_ssl
     assert_equal 5, fake_http.open_timeout
     assert_equal 5, fake_http.read_timeout
-    assert_equal [["GET", "/entry/pubmed/1", "togows-cli/#{TogoWS::VERSION}", nil, nil]], fake_http.requests
+    assert_equal [["GET", "/entry/pubmed/1", "togows/#{TogoWS::VERSION}", nil, nil]], fake_http.requests
   end
 
   def test_post_sends_plain_text_body
@@ -82,7 +82,7 @@ class TestClient < Minitest::Test
     end
 
     refute fake_http.use_ssl
-    assert_equal [["POST", "/convert/genbank.gff", "togows-cli/#{TogoWS::VERSION}", "text/plain", "LOCUS"]],
+    assert_equal [["POST", "/convert/genbank.gff", "togows/#{TogoWS::VERSION}", "text/plain", "LOCUS"]],
                  fake_http.requests
   end
 

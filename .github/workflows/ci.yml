@@ -35,4 +35,4 @@ jobs:
         run: bundle exec rubocop
 
       - name: Build gem
-        run: gem build togows-cli.gemspec
+        run: gem build togows.gemspec
