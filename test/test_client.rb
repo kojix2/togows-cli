@@ -61,7 +61,7 @@ class TestClient < Minitest::Test
     fake_http = FakeHTTP.new("togows.org", 443, FakeHTTPSuccess.new("ok"))
     client = TogoWS::Client.new("https://togows.org", 5)
 
-    Net::HTTP.stub(:new, fake_http) do
+    stub_method(Net::HTTP, :new, fake_http) do
       assert_equal "ok", client.get("/entry/pubmed/1")
     end
 
@@ -77,7 +77,7 @@ class TestClient < Minitest::Test
     fake_http = FakeHTTP.new("togows.org", 80, FakeHTTPSuccess.new("converted"))
     client = TogoWS::Client.new("http://togows.org", 5)
 
-    Net::HTTP.stub(:new, fake_http) do
+    stub_method(Net::HTTP, :new, fake_http) do
       assert_equal "converted", client.post("/convert/genbank.gff", "LOCUS")
     end
 
@@ -93,7 +93,7 @@ class TestClient < Minitest::Test
     calls = [first, second]
     client = TogoWS::Client.new("http://togows.org", 5)
 
-    Net::HTTP.stub(:new, ->(_host, _port) { calls.shift }) do
+    stub_method(Net::HTTP, :new, ->(_host, _port) { calls.shift }) do
       assert_equal "ok", client.get("/entry/pubmed/1")
     end
 
@@ -106,7 +106,7 @@ class TestClient < Minitest::Test
     client = TogoWS::Client.new("http://togows.org", 5)
 
     error = assert_raises(TogoWS::HTTPError) do
-      Net::HTTP.stub(:new, fake_http) do
+      stub_method(Net::HTTP, :new, fake_http) do
         client.get("/entry/pubmed/missing")
       end
     end

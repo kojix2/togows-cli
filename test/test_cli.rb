@@ -125,7 +125,7 @@ class TestCLI < Minitest::Test
     out = nil
     err = nil
 
-    TogoWS::Client.stub(:new, client) do
+    stub_method(TogoWS::Client, :new, client) do
       status, out, err = run_cli(["convert", "genbank.gff"], stdin: stdin)
     end
 
@@ -141,7 +141,7 @@ class TestCLI < Minitest::Test
     out = nil
     err = nil
 
-    TogoWS::Client.stub(:new, client) do
+    stub_method(TogoWS::Client, :new, client) do
       status, out, err = run_cli(
         %w[entry pubmed 1],
         stderr: TTYStringIO.new
@@ -159,7 +159,7 @@ class TestCLI < Minitest::Test
     out = nil
     err = nil
 
-    TogoWS::Client.stub(:new, client) do
+    stub_method(TogoWS::Client, :new, client) do
       status, out, err = run_cli(%w[entry pubmed 1 --pager])
     end
 
@@ -175,7 +175,7 @@ class TestCLI < Minitest::Test
     err = nil
 
     with_env("PAGER" => "") do
-      TogoWS::Client.stub(:new, client) do
+      stub_method(TogoWS::Client, :new, client) do
         status, out, err = run_cli(
           %w[entry pubmed 1 --pager],
           stdout: TTYStringIO.new
@@ -195,8 +195,8 @@ class TestCLI < Minitest::Test
     err = nil
 
     with_env("PAGER" => "cat") do
-      TogoWS::Client.stub(:new, client) do
-        IO.stub(:popen, ->(_command, _mode) { raise Errno::EPIPE }) do
+      stub_method(TogoWS::Client, :new, client) do
+        stub_method(IO, :popen, ->(_command, _mode) { raise Errno::EPIPE }) do
           status, out, err = run_cli(
             %w[entry pubmed 1 --pager],
             stdout: TTYStringIO.new
@@ -215,7 +215,7 @@ class TestCLI < Minitest::Test
     out = nil
     err = nil
 
-    TogoWS::Client.stub(:new, DatabaseClient.new) do
+    stub_method(TogoWS::Client, :new, DatabaseClient.new) do
       status, out, err = run_cli(
         ["databases"],
         stderr: TTYStringIO.new
