@@ -1,0 +1,28 @@
+# Bundler
+/.bundle/
+/vendor/bundle/
+
+# Build artifacts
+/pkg/
+*.gem
+
+# Test and coverage output
+/coverage/
+
+# Runtime and tool caches
+/tmp/
+/.yardoc/
+/doc/
+/.ruby-lsp/
+
+# Local environment
+/.env
+/.env.*
+
+# Editors and OS files
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
