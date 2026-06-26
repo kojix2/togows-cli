@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
       %w[
         LICENSE.txt
         README.md
+        docs/**/*.md
         exe/*
         lib/**/*.rb
       ]
